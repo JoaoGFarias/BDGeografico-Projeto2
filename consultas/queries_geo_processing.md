@@ -7,7 +7,9 @@
 2 - [ST_Area](http://postgis.net/docs/ST_Area.html) - Selecione os distritos em ordem crescente de área
 
 ```sql
-
+SELECT dis.dist_32_na
+FROM afg_districts_329 as dis
+ORDER BY ST_AREA(dis.geom) ASC;
 ```
 
 3 - [ST_Length](http://postgis.net/docs/ST_Length.html) - Selecione as estradas em ordem crescente de distância percorrida
