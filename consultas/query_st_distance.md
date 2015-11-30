@@ -1,7 +1,9 @@
-1 - selecione os distritos que estão distantes a no máximo 100 m do aeroporto "KABUL INTL"
+1 - Selecione todos os destritos que est‹o no m‡ximo a 100m de "KABUL INTL"
 
+```sql
 select * from afg_airports_airfields, afg_districts_329
 where ST_Distance (afg_airports_airfields.geom, afg_districts_329.geom) < 100
+<<<<<<< HEAD:consultas de relacionamentos/query_st_distance.txt
 
 
 (2. st_equals) - selecione os 
@@ -37,3 +39,6 @@ having count(*) > 1000
 
 
 (8. st_
+=======
+```
+>>>>>>> 127d22ff87cd8ad08601cfeab78888e69039252a:consultas/query_st_distance.md
