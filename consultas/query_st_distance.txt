@@ -1,4 +1,0 @@
-1 - selecione os distritos que estão distantes a no máximo 100 m do aeroporto "KABUL INTL"
-
-select * from afg_airports_airfields, afg_districts_329
-where ST_Distance (afg_airports_airfields.geom, afg_districts_329.geom) < 100
