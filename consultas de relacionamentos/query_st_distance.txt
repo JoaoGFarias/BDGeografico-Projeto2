@@ -7,15 +7,18 @@ where ST_Distance (afg_airports_airfields.geom, afg_districts_329.geom) < 100
 (2. st_equals) - selecione os 
 
 
-(3. st_disjoint) - Mostre os aeroportos que não estão nos distritos com população menor que 30000 habitantes
+(3. st_disjoint) - Mostre os aeroportos que não estão nos distritos com população menor que 1000 habitantes
 
 select * from afg_airports_airfields, afg_districts_329 
 where ST_disjoint (afg_airports_airfields.geom, afg_districts_329.geom) and
 
 
-select * from 07_03_settlements
-group by 07_03_settlements.gid
-having count > 200
+-- Todos as provincias com mais de 1000 pessoas
+
+
+select a.prov_nam from "07_03_settlements" as a
+group by a.prov_nam
+having count(*) > 1000
 
 
 (4. st_intersect) - Mostre os aeroportos que estão na fronteira com o distrito "xx"
@@ -25,7 +28,9 @@ having count > 200
 (5. st_touches) - Faça uma consulta para retornar os distritos adjacentes àqueles com mais de um aeroporto.
 
 
+
 (6. st_crosses) - Faça uma
+
 
 
 (7. st_within) - Faça uma consulta que mostre as pessoas que residem no distrito "xx"
