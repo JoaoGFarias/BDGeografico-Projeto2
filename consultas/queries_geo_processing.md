@@ -1,7 +1,10 @@
 1 - [ST_Centroid](http://postgis.net/docs/ST_Centroid.html) - Selecionar centróides de cada distrito de acordo com os airfields neles contidos
 
 ```sql
-
+SELECT ST_CENTROID(ST_UNION(air.geom))
+FROM afg_districts_329 as dis, afg_airports_airfields as air
+WHERE ST_WITHIN(air.geom, dis.geom)
+GROUP BY dis.dist_32_na;
 ```
 
 2 - [ST_Area](http://postgis.net/docs/ST_Area.html) - Selecione os distritos em ordem crescente de área
