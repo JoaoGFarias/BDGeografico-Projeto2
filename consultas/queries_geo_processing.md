@@ -15,7 +15,9 @@ ORDER BY ST_AREA(dis.geom) ASC;
 3 - [ST_Length](http://postgis.net/docs/ST_Length.html) - Selecione as estradas em ordem crescente de distância percorrida
 
 ```sql
-
+SELECT road.id_ as ROAD_ID, CONCAT(road.name1_,road.name2_) as ROAD_COMPLETE_NAME
+FROM afg_all_roads as road
+ORDER BY ST_LENGTH(road.geom) ASC;
 ```
 
 4 - [ST_PointOnSurface](http://postgis.net/docs/ST_PointOnSurface.html) - Selecione 5 pontos na estrada AFG33230 que passam pelo distrito Shighnan
