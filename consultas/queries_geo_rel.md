@@ -5,12 +5,6 @@ from afg_airports_airfields a, afg_airports_airfields b
 where ST_Distance (a.geom, b.geom) < 0.5 AND a <> b;
 ```
 
-1.1 - [ST_Distance](http://postgis.net/docs/ST_Distance.html) [ST_GeomFromText](http://postgis.net/docs/ST_GeomFromText.html) - Calcular a distancia entre os aeroportos mais próximos
-
-```sql
-select ST_Distance (ST_GeomFromText('Point(67.14 33.49)'), ST_GeomFromText('Point(67.16 33.50)'));
-```
-
 2 - [ST_Equals](http://postgis.net/docs/ST_Equals.html) - Todos os aeroportos que estão a, no máximo, 0.5 de dos distritos Shighnan e Khwahan
 
 ```sql
