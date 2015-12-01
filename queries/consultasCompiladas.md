@@ -6,12 +6,14 @@ where ST_Distance (a.geom, b.geom) < 0.5 AND a <> b;
 ```
 
 
-2 - [ST_Equals](http://postgis.net/docs/ST_Equals.html) - Mostra os 10 primeiros distritos em que a união de suas geometrias são idênticas
+2 - [ST_Equals](http://postgis.net/docs/ST_Equals.html) - Todos os aeroportos que estão a, no máximo, 0.5 de dos distritos Shighnan e Khwahan
 
 ```sql
-select d2.geom
-from afg_districts_329 d1, afg_districts_329 d2
-where st_equals(st_union(d1.geom, d2.geom), st_union(d2.geom, d1.geom)) limit 10;
+SELECT DISTINCT air1.nam
+FROM afg_airports_airfields as air1, afg_airports_airfields as air2, afg_districts_329 as dis1, afg_districts_329 as dis2
+WHERE dis1.dist_32_na = 'Shighnan' and dis2.dist_32_na = 'Khwahan' 
+and ST_DISTANCE(air1.geom,dis1.geom) < 0.5 and ST_DISTANCE(air2.geom,dis2.geom) < 0.5 
+and ST_EQUALS(air1.geom, air2.geom);
 ```
 
 
