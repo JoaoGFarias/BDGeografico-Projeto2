@@ -16,11 +16,11 @@ and ST_EQUALS(air1.geom, air2.geom);
 ```
 
 
-3 - [ST_Disjoint](http://postgis.net/docs/ST_Disjoint.html) - Todas as estradas que não passam por Bangi
+3 - [ST_Disjoint](http://postgis.net/docs/ST_Disjoint.html) - Todas as estradas que não passam por Chahar Burja
 ```sql
 SELECT road.geom
 FROM afg_all_roads as road, afg_districts_329 as dist
-WHERE dist.dist_32_na = 'Bangi' AND ST_DISJOINT(road.geom,dist.geom);
+WHERE dist.dist_32_na = 'Chahar Burja' AND ST_DISJOINT(road.geom,dist.geom);
 ```
 
 4 - [ST_Intersects](http://postgis.net/docs/ST_Intersects.html) - Todas as estradas que passam por Ragh
