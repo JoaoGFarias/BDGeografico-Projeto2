@@ -63,7 +63,7 @@ ON road1.id_ = 'AFG24229' AND road2.id_ = 'AFG32085'
 ```sql
 SELECT road.id_
 FROM afg_all_roads as road, afg_districts_329 as dist
-WHERE dist.dist_32_na = 'Bangi' AND ST_DIFFERENCE(road.geom,dist.geom) = road.geom;
+WHERE dist.dist_32_na = 'Chahar Burja' AND ST_DIFFERENCE(road.geom,dist.geom) = road.geom;
 ```
 
 9 - [ST_Union](http://postgis.net/docs/ST_Union.html) - Selecione a região formada pelos distritos Kunduz, Dihdadi e Taluqan
