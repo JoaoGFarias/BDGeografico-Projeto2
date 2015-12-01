@@ -66,5 +66,10 @@ WHERE dist.dist_32_na = 'Bangi' AND ST_DIFFERENCE(road.geom,dist.geom) = road.ge
 9 - [ST_Union](http://postgis.net/docs/ST_Union.html) - Selecione a região formada pelos distritos Kunduz, Dihdadi e Taluqan
 
 ```sql
-
+SELECT ST_UNION(dist1.geom, ST_UNION(dist2.geom,dist3.geom))
+FROM afg_districts_329 as dist1
+INNER JOIN afg_districts_329 as dist2
+on dist1.dist_32_na = 'Kunduz' and dist2.dist_32_na = 'Dihdadi'
+INNER JOIN afg_districts_329 as dist3
+on dist3.dist_32_na = 'Taluqan';
 ```
