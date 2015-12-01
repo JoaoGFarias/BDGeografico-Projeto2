@@ -1,22 +1,35 @@
+'''sql
 select d2.geom from afg_districts_329 d1, afg_all_roads d2 
 where d1.dist_32_na = 'Kabul' and st_within (d2.geom, d1.geom);
+'''
 
+'''sql
 SELECT d1.geom FROM afg_districts_329 d2, afg_districts_329 d1, afg_airports_airfields a
 WHERE st_contains(d2.geom, a.geom) AND st_Touches(d1.geom, d2.geom);
+'''
 
+'''sql
 select d1.geom from afg_districts_329 d1, afg_districts_329 d2
 where st_Touches(d1.geom, d2.geom) and d2.dist_32_na = 'KABUL INTL';
+'''
 
+'''sql
 SELECT road.geom
 FROM afg_all_roads as road, afg_districts_329 as dist
 WHERE dist.dist_32_na = 'Bangi' AND ST_DISJOINT(road.geom,dist.geom);
-
+'''
+'''sql
 select distinct r.geom from afg_districts_329 d, afg_all_roads r
 where st_intersects(r.geom, d.geom) and d.dist_32_na = 'Ragh';
+'''
 
+'''sql
 select distinct b.geom from afg_airports_airfields a, afg_airports_airfields b where ST_Distance (a.geom, b.geom) < 0.5 AND a <> b;
-
+'''
+'''sql
 select d.geom from afg_districts_329 as d, afg_airports_airfields as a
 where st_contains(d.geom, a.geom) and a.use_descri = 'Military';
 
+'''sql
 SELECT b.geom FROM afg_districts_329 a, afg_all_roads b, afg_airports_airfields c WHERE ST_Crosses(a.geom, b.geom) AND ST_Contains(a.geom, c.geom);
+'''
