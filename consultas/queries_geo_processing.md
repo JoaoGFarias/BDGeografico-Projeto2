@@ -20,10 +20,12 @@ FROM afg_all_roads as road
 ORDER BY ST_LENGTH(road.geom) ASC;
 ```
 
-4 - [ST_PointOnSurface](http://postgis.net/docs/ST_PointOnSurface.html) - Selecione 5 pontos na estrada AFG33230 que passam pelo distrito Shighnan
+4 - [ST_PointOnSurface](http://postgis.net/docs/ST_PointOnSurface.html) - Selecione 5 pontos na estrada R-C2807 que passam pelo distrito Chahar Burja
 
 ```sql
-
+SELECT ST_AsText(ST_PointOnSurface(ST_INTERSECTION(road.geom,dis.geom)))
+FROM afg_districts_329 as dis, afg_all_roads as road
+WHERE dis.dist_32_na = 'Chahar Burja' and road.id_ = 'R-C2807';
 ```
 
 5 - [ST_Boundary](http://postgis.net/docs/ST_Boundary.html) - Selecione o limite combinatório da intersecção dos distritos Shighnan e Khwahan
