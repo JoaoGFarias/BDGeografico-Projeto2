@@ -7,6 +7,10 @@ WHERE st_contains(d2.geom, a.geom) AND st_Touches(d1.geom, d2.geom);
 select d1.geom from afg_districts_329 d1, afg_districts_329 d2
 where st_Touches(d1.geom, d2.geom) and d2.dist_32_na = 'KABUL INTL';
 
+SELECT road.geom
+FROM afg_all_roads as road, afg_districts_329 as dist
+WHERE dist.dist_32_na = 'Bangi' AND ST_DISJOINT(road.geom,dist.geom);
+
 select distinct r.geom from afg_districts_329 d, afg_all_roads r
 where st_intersects(r.geom, d.geom) and d.dist_32_na = 'Ragh';
 
