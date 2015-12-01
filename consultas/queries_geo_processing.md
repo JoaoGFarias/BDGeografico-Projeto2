@@ -37,10 +37,13 @@ INNER JOIN afg_districts_329 as dis2
 on dis1.dist_32_na = 'Shighnan' and dis2.dist_32_na = 'Khwahan';
 ```
 
-6 - [ST_Buffer](http://postgis.net/docs/ST_Buffer.html) - Selecione todos os airfields que estão, no máximo, a uma distância de 50m da estrada A-87
+6 - [ST_Buffer](http://postgis.net/docs/ST_Buffer.html) - Selecione todos os airfields que estão, no máximo, a uma distância de 1m da estrada R-C803
 
 ```sql
-
+SELECT DISTINCT air.nam
+FROM afg_all_roads as road, afg_airports_airfields air
+WHERE road.id_ = 'R-C803'
+AND ST_WITHIN(air.geom, ST_BUFFER(road.geom,1));
 ```
 
 7 - [ST_Intersection](http://postgis.net/docs/ST_Intersection.html) - Encontre as regiões de encontro das estradas AFG33230 e A-87
