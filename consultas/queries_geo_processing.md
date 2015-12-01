@@ -41,25 +41,35 @@ on dis1.dist_32_na = 'Shighnan' and dis2.dist_32_na = 'Khwahan';
 
 ```sql
 SELECT DISTINCT air.nam
-FROM afg_all_roads as road, afg_airports_airfields air
+FROM afg_all_roads as road, afg_airports_airfields as air
 WHERE road.id_ = 'R-C803'
 AND ST_WITHIN(air.geom, ST_BUFFER(road.geom,1));
 ```
 
-7 - [ST_Intersection](http://postgis.net/docs/ST_Intersection.html) - Encontre as regiões de encontro das estradas AFG33230 e A-87
+7 - [ST_Intersection](http://postgis.net/docs/ST_Intersection.html) - Encontre as regiões de encontro das estradas AFG24229 e AFG32085
 
 ```sql
-
+SELECT ST_AsText(ST_INTERSECTION(road1.geom, road2.geom))
+FROM afg_all_roads as road1
+INNER JOIN afg_all_roads as road2
+ON road1.id_ = 'AFG24229' AND road2.id_ = 'AFG32085'
 ```
 
 8 - [ST_Difference](http://postgis.net/docs/ST_Difference.html) - Selecione o nome de todas as estradas que não passam pelo distrito Bangi
 
 ```sql
-
+SELECT road.id_
+FROM afg_all_roads as road, afg_districts_329 as dist
+WHERE dist.dist_32_na = 'Bangi' AND ST_DIFFERENCE(road.geom,dist.geom) = road.geom;
 ```
 
 9 - [ST_Union](http://postgis.net/docs/ST_Union.html) - Selecione a região formada pelos distritos Kunduz, Dihdadi e Taluqan
 
 ```sql
-
+SELECT ST_UNION(dist1.geom, ST_UNION(dist2.geom,dist3.geom))
+FROM afg_districts_329 as dist1
+INNER JOIN afg_districts_329 as dist2
+on dist1.dist_32_na = 'Kunduz' and dist2.dist_32_na = 'Dihdadi'
+INNER JOIN afg_districts_329 as dist3
+on dist3.dist_32_na = 'Taluqan';
 ```
